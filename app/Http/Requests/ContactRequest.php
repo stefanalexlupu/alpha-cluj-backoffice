@@ -29,7 +29,7 @@ class ContactRequest extends FormRequest
             'name' => 'required|min:3',
             'age' => 'required|numeric',
             'phone' => 'required|numeric',
-            'info' => 'required',
+            // 'info' => 'required',
             'gdpr' => 'required|accepted',
         ];
     }
@@ -38,7 +38,7 @@ class ContactRequest extends FormRequest
     {
         throw new HttpResponseException(response()->json([
             'success'   => false,
-            'message'   => 'Validation errors',
+            'message'   => 'Erori de validare',
             'data'      => $validator->errors()
         ]));
     }

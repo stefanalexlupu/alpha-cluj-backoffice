@@ -8,9 +8,9 @@ use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
-class FormController extends Controller
+class ContactController extends Controller
 {
-    function contact(ContactRequest $request)
+    function new(ContactRequest $request)
     {
         $contact = Contact::create([
             'name' => $request->name,
@@ -20,8 +20,7 @@ class FormController extends Controller
             'gdpr' => $request->gdpr,
         ]);
 
-        // TODO: change "to"
-        Mail::to('ionut@gmail.com')->queue(new NewContact($contact));
+        Mail::to(env('MAIL_NEW_CONTACT__SENDTO', 'alpha@bisericabetel.com'))->queue(new NewContact($contact));
 
         return response()->json($contact);
     }

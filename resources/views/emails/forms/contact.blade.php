@@ -15,8 +15,4 @@
         <td>Info</td>
         <td>{{ $contact->info }}</td>
     </tr>
-    <tr>
-        <td>GDPR</td>
-        <td>{{ $contact->gdpr }}</td>
-    </tr>
 </table>

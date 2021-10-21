@@ -18,7 +18,7 @@ class CreateContactsTable extends Migration
             $table->string('name');
             $table->integer('age');
             $table->string('phone');
-            $table->string('info');
+            $table->string('info')->nullable();
             $table->boolean('gdpr');
             $table->timestamps();
         });

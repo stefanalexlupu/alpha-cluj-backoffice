@@ -31,8 +31,6 @@ class NewContact extends Mailable
      */
     public function build()
     {
-        // TODO: change "from"
-        return $this->from('alpha-cluj@gmail.com', 'Alpha Cluj')
-            ->view('emails.forms.contact');
+        return $this->view('emails.forms.contact');
     }
 }
