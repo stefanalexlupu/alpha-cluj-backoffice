@@ -2,26 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ContactRequest;
-use App\Mail\NewContact;
 use App\Models\Contact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use Inertia\Inertia;
 
 class ContactController extends Controller
 {
-    function new(ContactRequest $request)
+    function index(Request $request)
     {
-        $contact = Contact::create([
-            'name' => $request->name,
-            'age' => $request->age,
-            'phone' => $request->phone,
-            'info' => $request->info,
-            'gdpr' => $request->gdpr,
+        return Inertia::render('Contacts', [
+            'contacts' => Contact::all()
         ]);
-
-        Mail::to(env('MAIL_NEW_CONTACT__SENDTO', 'alpha@bisericabetel.com'))->queue(new NewContact($contact));
-
-        return response()->json($contact);
     }
 }
